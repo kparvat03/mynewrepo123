@@ -24,8 +24,8 @@ pipeline {
         }
           stage("docker tag & push"){
             steps {
-                sh "docker tag myrepo kparvat03/myrepo:latest"
-                sh "docker push kparvat03/myrepo:latest"
+                sh "docker tag akshu20791/endtoendproject31july:v1"
+                sh 'docker push akshu20791/endtoendproject31july:v1'
                    }
         }
         
