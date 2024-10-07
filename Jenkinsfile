@@ -38,6 +38,20 @@ pipeline{
                 sh 'docker run -dt -p 8096:8096 --name c005 myimg'
             }
         }
+        stage('Docker login') {
+            steps {
+                withCredentials([usernamePassword(credentialsId: '', passwordVariable: 'admin@123', usernameVariable: 'kparvat03')]) {
+                    sh "echo $PASS | docker login -u $USER --password-stdin"
+        
+                }
+            }
+        }
+          stage("docker tag & push"){
+            steps {
+                sh "docker tag myimg bankingproject/myimg:latest"
+                sh 'docker push bankingproject/myimg:latest'
+                   }
+        }
         
     }
 }
