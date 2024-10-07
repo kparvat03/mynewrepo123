@@ -35,8 +35,9 @@ pipeline{
          }
         stage('port expose'){
             steps{
-                sh 'docker run -dt -p 8095:8095 --name c004 myimg'
+                sh 'docker run -dt -p 8096:8096 --name c005 myimg'
             }
-        }   
+        }
+        
     }
 }
