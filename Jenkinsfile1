@@ -22,6 +22,12 @@ pipeline {
                 }
             }
         }
+          stage("docker tag & push"){
+            steps {
+                sh "docker tag myrepo kparvat03/myrepo:latest"
+                sh "docker push kparvat03/myrepo:latest"
+                   }
+        }
         
         
         stage('Deploy to k8s'){
