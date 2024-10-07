@@ -49,9 +49,12 @@ pipeline{
     
           stage("docker tag & push"){
             steps {
-                sh "docker tag myimg bankingproject/myimg:latest"
-                sh 'docker push bankingproject/myimg:latest'
-                   }
+                // Tag the Docker image with your Docker Hub repository name
+                sh "docker tag bankingproject/myimg kparvat03/bankingproject:latest"
+                
+                // Push the tagged image to Docker Hub
+                sh "docker push kparvat03/bankingproject:latest"
+            }
         }
         
     }
