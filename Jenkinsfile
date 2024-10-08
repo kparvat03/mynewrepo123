@@ -50,7 +50,7 @@ pipeline{
           stage("docker tag & push"){
             steps {
                 // Tag the Docker image with your Docker Hub repository name
-                sh "docker tag bankingproject/myimg kparvat03/bankingproject:latest"
+                //sh "docker tag bankingproject/myimg kparvat03/bankingproject:latest"
                 
                 // Push the tagged image to Docker Hub
                 sh "docker push kparvat03/bankingproject:latest"
