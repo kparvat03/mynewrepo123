@@ -13,6 +13,6 @@
     command : sudo systemctl start docker
     
   - name : Deploy Docker Container
-    command : docker run -itd -p 8094:8094 bankingproject/myimg
+    command : docker run -itd -p 8094:8094 kparvat03/bankingproject:latest
 
 
