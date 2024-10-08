@@ -35,7 +35,7 @@ pipeline{
          }
         stage('port expose'){
             steps{
-                sh 'docker run -dt -p 8091:8091 --name c001 myimg'
+                sh 'docker run -dt -p 8092:8092 --name c002 myimg'
             }
         }
         
@@ -50,7 +50,7 @@ pipeline{
           stage("docker tag & push"){
             steps {
                 // Tag the Docker image with your Docker Hub repository name
-                //sh "docker tag bankingproject/myimg kparvat03/bankingproject:latest"
+                sh "docker tag bankingproject/myimg kparvat03/bankingproject:latest"
                 
                 // Push the tagged image to Docker Hub
                 sh "docker push kparvat03/bankingproject:latest"
