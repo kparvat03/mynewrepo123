@@ -35,7 +35,7 @@ pipeline{
          }
         stage('port expose'){
             steps{
-                sh 'docker run -dt -p 8095:8095 --name c006 myimg'
+                sh 'docker run -dt -p 8096:8096 --name c007 myimg'
             }
         }
         
@@ -56,6 +56,11 @@ pipeline{
                 sh "docker push kparvat03/bankingproject"
             }
         }
+          stage ("deploy to production") {
+            steps {
+                ansiblePlaybook become: true, credentialsId: 'ansible', disableHostKeyChecking: true, installation: 'ansible', inventory: '/etc/ansible/hosts', playbook: '/var/lib/jenkins/workspace/bankingproject/ansible-playbook.yml ', vaultTmpPath: ''
+            }   
+       }
         
     }
 }
