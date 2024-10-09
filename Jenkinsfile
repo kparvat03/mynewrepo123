@@ -30,14 +30,14 @@ pipeline{
         }
         stage('run dockerfile'){
           steps{
-               sh 'docker build -t bankingproject/myimg .'
+               sh 'docker build -t bankingproject .'
            }
          }
-        //stage('port expose'){
-         //   steps{
-         //       sh 'docker run -dt -p 8096:8096 --name c007 myimg'
-         //   }
-        //}
+         stage('port expose'){
+            steps{
+                sh 'docker run -d -p 8081:8081 bankingproject:latest'
+            }
+        }
         
         stage('Docker login') {
             steps {
@@ -50,7 +50,7 @@ pipeline{
           stage("docker tag & push"){
             steps {
                 // Tag the Docker image with your Docker Hub repository name
-                sh "docker tag bankingproject/myimg kparvat03/bankingproject:latest"
+                sh "docker tag bankingproject kparvat03/bankingproject:latest"
                 
                 // Push the tagged image to Docker Hub
                 sh "docker push kparvat03/bankingproject:latest"
