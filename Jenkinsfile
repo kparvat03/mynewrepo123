@@ -33,11 +33,11 @@ pipeline{
                sh 'docker build -t bankingproject/myimg .'
            }
          }
-        stage('port expose'){
-            steps{
-                sh 'docker run -dt -p 8096:8096 --name c007 myimg'
-            }
-        }
+        //stage('port expose'){
+         //   steps{
+         //       sh 'docker run -dt -p 8096:8096 --name c007 myimg'
+         //   }
+        //}
         
         stage('Docker login') {
             steps {
@@ -58,7 +58,7 @@ pipeline{
         }
           stage ("deploy to production") {
             steps {
-                ansiblePlaybook become: true, credentialsId: 'ansible', disableHostKeyChecking: true, installation: 'ansible', inventory: '/etc/ansible/hosts', playbook: '/var/lib/jenkins/workspace/bankingproject/ansible-playbook.yml ', vaultTmpPath: ''
+                ansiblePlaybook become: true, credentialsId: 'ansible', disableHostKeyChecking: true, installation: 'ansible', inventory: '/etc/ansible/hosts', playbook: '/var/lib/jenkins/workspace/bankingproject/ansible-playbook.yml', vaultTmpPath: ''
             }   
        }
         
